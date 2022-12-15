@@ -125,8 +125,9 @@ function ActivityDetailHeader({
               {availableSort?.map((item, index) => (
                 <Fragment key={item.value}>
                   <MenuItem
+                    data-cy="sort-selection"
                     onClick={() => setSortBy(item.value)}
-                    data-cy={item.value}
+                    // data-cy={item.value}
                     h="52px"
                     icon={<Box data-cy="sort-selection-icon">{item.icon}</Box>}
                   >
