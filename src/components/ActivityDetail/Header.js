@@ -128,7 +128,11 @@ function ActivityDetailHeader({
                     onClick={() => setSortBy(item.value)}
                     data-cy={item.value}
                     h="52px"
-                    icon={<Box data-cy="sort-selection-icon">{item.icon}</Box>}
+                    icon={
+                      <Box data-cy="sort-selection-icon">
+                        <SortLatestIcon />
+                      </Box>
+                    }
                   >
                     <Box display="flex" justifyContent="space-between">
                       <Text>{item.title}</Text>
