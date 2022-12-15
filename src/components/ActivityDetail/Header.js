@@ -130,7 +130,7 @@ function ActivityDetailHeader({
                     h="52px"
                     icon={
                       <Box data-cy="sort-selection-icon">
-                        <SortLatestIcon />
+                        <SortLatestIcon pointerEvents="auto" />
                       </Box>
                     }
                   >
