@@ -51,7 +51,7 @@ function DashboardActivityList({
                   boxShadow="0px 6px 10px rgba(0, 0, 0, 0.1)"
                   justifyContent="space-between"
                   onClick={() => history.push(`/activities/${activity?.id}`)}
-                  data-cy={`activity-item-${index}`}
+                  data-cy={`activity-item`}
                 >
                   <CardHeader pt="22px" py="27px">
                     <Heading data-cy="activity-item-title" size="md">
