@@ -117,8 +117,8 @@ function ActivityDetailHeader({
         </Box>
         <Box display="flex" alignItems="center" gap="18px">
           <Menu autoSelect={false}>
-            <MenuButton>
-              <SortIcon cursor="pointer" data-cy="todo-sort-button" />
+            <MenuButton data-cy="todo-sort-button">
+              <SortIcon />
             </MenuButton>
 
             <MenuList overflow="hidden" p={0} borderRadius="6px">
@@ -128,11 +128,7 @@ function ActivityDetailHeader({
                     onClick={() => setSortBy(item.value)}
                     data-cy={item.value}
                     h="52px"
-                    icon={
-                      <Box data-cy="sort-selection-icon">
-                        <SortLatestIcon pointerEvents="auto" />
-                      </Box>
-                    }
+                    icon={<Box data-cy="sort-selection-icon">{item.icon}</Box>}
                   >
                     <Box display="flex" justifyContent="space-between">
                       <Text>{item.title}</Text>
