@@ -111,7 +111,7 @@ function ActivityDetailHeader({
 
           <EditIcon
             cursor="pointer"
-            onClick={() => setIsEditTitle(true)}
+            onClick={() => setIsEditTitle(!isEditTitle)}
             data-cy="todo-title-edit-button"
           />
         </Box>
