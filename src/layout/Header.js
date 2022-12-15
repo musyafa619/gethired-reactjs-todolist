@@ -10,6 +10,8 @@ function Header() {
       color="white"
       h="105px"
       data-cy="header-background"
+      position="fixed"
+      zIndex={2}
     >
       <Container maxW="container.lg">
         <Heading fontSize="24px" fontWeight={700} data-cy="header-title">

@@ -286,7 +286,7 @@ function ActivityDetail() {
   }, [sortBy, defaultTodos.length]);
 
   return (
-    <Box bgColor="grey.200" minH="100vh">
+    <Box bgColor="grey.200" minH="100vh" pb="40px">
       <Header />
       {loadingActivity ? (
         <Loader />
@@ -305,7 +305,7 @@ function ActivityDetail() {
             handleOpenUpdateTodo={handleOpenUpdateTodo}
             handleUpdateTodo={handleUpdateTodo}
           />
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<div>Loading...</div>}>
             <ActivityDetailFormTodoModal
               isOpen={isOpenFormTodo}
               onClose={onCloseFormTodo}

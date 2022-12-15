@@ -53,7 +53,7 @@ function ActivityDetailHeader({
     handleUpdateActivity(event.target.value);
   };
   return (
-    <Box w="100%" color="black" mt="49px" mb="59px">
+    <Box w="100%" color="black" pt="154px" pb="59px">
       <Container
         display="flex"
         alignItems="center"

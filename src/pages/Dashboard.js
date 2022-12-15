@@ -95,6 +95,7 @@ function Dashboard() {
     <Box
       bgColor={activities?.data?.data?.length < 1 ? "white" : "grey.200"}
       minH="100vh"
+      pb="40px"
     >
       <Header />
       <DashboardHeader
@@ -106,7 +107,7 @@ function Dashboard() {
         loadingActivities={loadingActivities}
         handleConfirmDeleteActivity={handleConfirmDeleteActivity}
       />
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<div>Loading...</div>}>
         <ModalInformation
           isOpen={isOpenInformationActivity}
           onClose={onCloseInformationActivity}
