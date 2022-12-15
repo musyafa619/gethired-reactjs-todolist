@@ -27,13 +27,29 @@ import {
 } from "../../assets/icons";
 
 const availableSort = [
-  { title: "Terbaru", icon: <SortLatestIcon />, value: "sort-latest" },
-  { title: "Terlama", icon: <SortOldestIcon />, value: "sort-oldest" },
-  { title: "A-Z", icon: <SortAZIcon />, value: "sort-az" },
-  { title: "Z-A", icon: <SortZAIcon />, value: "sort-za" },
+  {
+    title: "Terbaru",
+    icon: <SortLatestIcon data-cy="sort-selection-icon" />,
+    value: "sort-latest",
+  },
+  {
+    title: "Terlama",
+    icon: <SortOldestIcon data-cy="sort-selection-icon" />,
+    value: "sort-oldest",
+  },
+  {
+    title: "A-Z",
+    icon: <SortAZIcon data-cy="sort-selection-icon" />,
+    value: "sort-az",
+  },
+  {
+    title: "Z-A",
+    icon: <SortZAIcon data-cy="sort-selection-icon" />,
+    value: "sort-za",
+  },
   {
     title: "Belum Selesai",
-    icon: <SortUnfinishedIcon />,
+    icon: <SortUnfinishedIcon data-cy="sort-selection-icon" />,
     value: "sort-unfinished",
   },
 ];
@@ -86,6 +102,7 @@ function ActivityDetailHeader({
               color="black"
               fontWeight={700}
               data-cy="todo-title"
+              onClick={() => setIsEditTitle(true)}
             >
               {title}
             </Heading>
