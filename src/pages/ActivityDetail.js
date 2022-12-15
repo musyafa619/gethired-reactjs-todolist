@@ -16,6 +16,9 @@ const ActivityDetailFormTodoModal = React.lazy(() =>
 const DeleteAlert = React.lazy(() =>
   import("../components/Common/DeleteAlert")
 );
+const ModalInformation = React.lazy(() =>
+  import("../components/Common/InformationModal")
+);
 
 const initialForm = {
   title: "",
@@ -39,6 +42,11 @@ function ActivityDetail() {
     isOpen: isOpenDeleteTodo,
     onOpen: onOpenDeleteTodo,
     onClose: onCloseDeleteTodo,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenInformationTodo,
+    onOpen: onOpenInformationTodo,
+    onClose: onCloseInformationTodo,
   } = useDisclosure();
 
   const [selectedTodo, setSelectedTodo] = useState(null);
@@ -177,6 +185,7 @@ function ActivityDetail() {
       await TodoService.delete(selectedTodo?.id);
       refetchActivity();
       onCloseDeleteTodo();
+      onOpenInformationTodo();
       setLoading((prevState) => ({
         ...prevState,
         deleteTodo: false,
@@ -324,6 +333,11 @@ function ActivityDetail() {
               isOpen={isOpenDeleteTodo}
               onClose={onCloseDeleteTodo}
               handleConfirm={handleDeleteTodo}
+            />
+            <ModalInformation
+              type="Todo"
+              isOpen={isOpenInformationTodo}
+              onClose={onCloseInformationTodo}
             />
           </Suspense>
         </Fragment>

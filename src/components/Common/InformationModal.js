@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { ModalInformartionIcon } from "../../assets/icons";
 
-function ModalInformation({ isOpen, onClose }) {
+function ModalInformation({ isOpen, onClose, type }) {
   return (
     <Box data-cy="modal-information">
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
@@ -26,7 +26,7 @@ function ModalInformation({ isOpen, onClose }) {
               fontSize="14px"
               fontWeight={500}
             >
-              Activity berhasil dihapus
+              {type} berhasil dihapus
             </Text>
           </ModalBody>
         </ModalContent>

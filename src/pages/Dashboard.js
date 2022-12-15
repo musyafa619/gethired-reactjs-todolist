@@ -109,6 +109,7 @@ function Dashboard() {
       />
       <Suspense fallback={<div>Loading...</div>}>
         <ModalInformation
+          type="Activity"
           isOpen={isOpenInformationActivity}
           onClose={onCloseInformationActivity}
         />
