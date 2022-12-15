@@ -29,27 +29,27 @@ import {
 const availableSort = [
   {
     title: "Terbaru",
-    icon: <SortLatestIcon data-cy="sort-selection-icon" />,
+    icon: <SortLatestIcon />,
     value: "sort-latest",
   },
   {
     title: "Terlama",
-    icon: <SortOldestIcon data-cy="sort-selection-icon" />,
+    icon: <SortOldestIcon />,
     value: "sort-oldest",
   },
   {
     title: "A-Z",
-    icon: <SortAZIcon data-cy="sort-selection-icon" />,
+    icon: <SortAZIcon />,
     value: "sort-az",
   },
   {
     title: "Z-A",
-    icon: <SortZAIcon data-cy="sort-selection-icon" />,
+    icon: <SortZAIcon />,
     value: "sort-za",
   },
   {
     title: "Belum Selesai",
-    icon: <SortUnfinishedIcon data-cy="sort-selection-icon" />,
+    icon: <SortUnfinishedIcon />,
     value: "sort-unfinished",
   },
 ];
@@ -127,7 +127,7 @@ function ActivityDetailHeader({
                     onClick={() => setSortBy(item.value)}
                     data-cy={item.value}
                     h="52px"
-                    icon={item.icon}
+                    icon={<Box data-cy="sort-selection-icon">{item.icon}</Box>}
                   >
                     <Box display="flex" justifyContent="space-between">
                       <Text>{item.title}</Text>
