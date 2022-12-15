@@ -84,6 +84,7 @@ function ActivityDetailHeader({
           />
           {isEditTitle ? (
             <Input
+              autoFocus
               defaultValue={title}
               fontWeight={700}
               fontSize="36px"

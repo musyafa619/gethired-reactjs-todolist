@@ -38,7 +38,11 @@ function Dashboard() {
     data: activities,
     isValidating: loadingActivities,
     mutate: refetchActivities,
-  } = useSWR(process.env.REACT_APP_BASE_EMAIL, ActivityService.getAll);
+  } = useSWR(process.env.REACT_APP_BASE_EMAIL, ActivityService.getAll, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
 
   const handleCreateActivity = async () => {
     const data = {

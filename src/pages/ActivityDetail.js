@@ -63,6 +63,9 @@ function ActivityDetail() {
     isValidating: loadingActivity,
     mutate: refetchActivity,
   } = useSWR(activity_group_id, ActivityService.getOne, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
     onSuccess: (res) => {
       setDefaultTodo(res.data.todo_items);
       setSortBy("sort-latest");
