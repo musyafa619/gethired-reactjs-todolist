@@ -19,12 +19,7 @@ function DeleteAlert({
   loadingDeleteActivity,
 }) {
   return (
-    <AlertDialog
-      data-cy="modal-delete"
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-    >
+    <AlertDialog isCentered isOpen={isOpen} onClose={onClose}>
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogBody
@@ -33,6 +28,7 @@ function DeleteAlert({
             alignItems="center"
             mb="46px"
             pt="40px"
+            data-cy="modal-delete"
           >
             <ModalDeleteIcon data-cy="modal-delete-icon" mb="34px" />
             <Box
