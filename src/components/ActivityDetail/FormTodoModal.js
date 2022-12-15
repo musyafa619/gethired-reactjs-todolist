@@ -33,7 +33,7 @@ function ActivityDetailFormTodoModal({
       display="flex"
       alignItems="center"
       gap="19px"
-      data-cy={`modal-add-priority-${value}`}
+      data-cy={`modal-add-priority-item`}
     >
       <PriorityIndicator color={color} />
       <Text>{label}</Text>
