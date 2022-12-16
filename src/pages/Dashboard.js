@@ -1,8 +1,9 @@
-import React, { Suspense, useState } from "react";
+import React, { Fragment, Suspense, useState } from "react";
 import { Box, useDisclosure } from "@chakra-ui/react";
 import Header from "../layout/Header";
 import useSWR from "swr";
 import ActivityService from "../services/activity";
+import Loader from "../layout/Loader";
 
 const DashboardHeader = React.lazy(() =>
   import("../components/Dashboard/Header")
@@ -105,31 +106,36 @@ function Dashboard() {
       pb="40px"
     >
       <Header />
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <DashboardHeader
-          handleCreateActivity={handleCreateActivity}
-          loadingCreateActivity={loading.createActivity}
-        />
-        <DashboardActivityList
-          activities={activities?.data?.data}
-          loadingActivities={loadingActivities}
-          handleConfirmDeleteActivity={handleConfirmDeleteActivity}
-        />
-        <ModalInformation
-          type="Activity"
-          isOpen={isOpenInformationActivity}
-          onClose={onCloseInformationActivity}
-        />
-        <DeleteAlert
-          loadingDeleteActivity={loading.deleteActivity}
-          name={selectedActivity?.title}
-          type="activity"
-          isOpen={isOpenDeleteActivity}
-          onClose={onCloseDeleteActivity}
-          handleConfirm={handleDeleteActivity}
-        />
-      </Suspense>
+      {loadingActivities ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <Suspense fallback={<div>Loading...</div>}>
+            <DashboardHeader
+              handleCreateActivity={handleCreateActivity}
+              loadingCreateActivity={loading.createActivity}
+            />
+            <DashboardActivityList
+              activities={activities?.data?.data}
+              loadingActivities={loadingActivities}
+              handleConfirmDeleteActivity={handleConfirmDeleteActivity}
+            />
+            <ModalInformation
+              type="Activity"
+              isOpen={isOpenInformationActivity}
+              onClose={onCloseInformationActivity}
+            />
+            <DeleteAlert
+              loadingDeleteActivity={loading.deleteActivity}
+              name={selectedActivity?.title}
+              type="activity"
+              isOpen={isOpenDeleteActivity}
+              onClose={onCloseDeleteActivity}
+              handleConfirm={handleDeleteActivity}
+            />
+          </Suspense>
+        </Fragment>
+      )}
     </Box>
   );
 }
