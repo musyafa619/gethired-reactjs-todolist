@@ -2,18 +2,14 @@ import React, { Fragment, Suspense, useEffect, useState } from "react";
 import { Box, useDisclosure } from "@chakra-ui/react";
 import Header from "../layout/Header";
 import Loader from "../layout/Loader";
+import ActivityDetailHeader from "../components/ActivityDetail/Header";
+import ActivityDetailTodoList from "../components/ActivityDetail/TodoList";
 import useSWR from "swr";
 import TodoService from "../services/todo";
 import { useParams } from "react-router-dom";
 import ActivityService from "../services/activity";
 import { priorityIndicator } from "../libs/priority-indicator";
 
-const ActivityDetailTodoList = React.lazy(() =>
-  import("../components/ActivityDetail/TodoList")
-);
-const ActivityDetailHeader = React.lazy(() =>
-  import("../components/ActivityDetail/Header")
-);
 const ActivityDetailFormTodoModal = React.lazy(() =>
   import("../components/ActivityDetail/FormTodoModal")
 );
@@ -308,20 +304,20 @@ function ActivityDetail() {
         <Loader />
       ) : (
         <Fragment>
-          <Suspense fallback={<div>Loading...</div>}>
-            <ActivityDetailHeader
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-              handleOpenCreateTodo={handleOpenCreateTodo}
-              detailActivity={activity?.data}
-              handleUpdateActivity={handleUpdateActivity}
-            />
-            <ActivityDetailTodoList
-              handleConfirmDeleteTodo={handleConfirmDeleteTodo}
-              todos={[...activity?.data?.todo_items]}
-              handleOpenUpdateTodo={handleOpenUpdateTodo}
-              handleUpdateTodo={handleUpdateTodo}
-            />
+          <ActivityDetailHeader
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            handleOpenCreateTodo={handleOpenCreateTodo}
+            detailActivity={activity?.data}
+            handleUpdateActivity={handleUpdateActivity}
+          />
+          <ActivityDetailTodoList
+            handleConfirmDeleteTodo={handleConfirmDeleteTodo}
+            todos={[...activity?.data?.todo_items]}
+            handleOpenUpdateTodo={handleOpenUpdateTodo}
+            handleUpdateTodo={handleUpdateTodo}
+          />
+          <Suspense fallback={<div></div>}>
             <ActivityDetailFormTodoModal
               isOpen={isOpenFormTodo}
               onClose={onCloseFormTodo}
