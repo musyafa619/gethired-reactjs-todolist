@@ -1,12 +1,15 @@
 import React, { Suspense, useState } from "react";
 import { Box, useDisclosure } from "@chakra-ui/react";
 import Header from "../layout/Header";
-import Loader from "../layout/Loader";
 import useSWR from "swr";
 import ActivityService from "../services/activity";
-import DashboardHeader from "../components/Dashboard/Header";
-import DashboardActivityList from "../components/Dashboard/ActivityList";
 
+const DashboardHeader = React.lazy(() =>
+  import("../components/Dashboard/Header")
+);
+const DashboardActivityList = React.lazy(() =>
+  import("../components/Dashboard/ActivityList")
+);
 const DeleteAlert = React.lazy(() =>
   import("../components/Common/DeleteAlert")
 );
@@ -102,16 +105,17 @@ function Dashboard() {
       pb="40px"
     >
       <Header />
-      <DashboardHeader
-        handleCreateActivity={handleCreateActivity}
-        loadingCreateActivity={loading.createActivity}
-      />
-      <DashboardActivityList
-        activities={activities?.data?.data}
-        loadingActivities={loadingActivities}
-        handleConfirmDeleteActivity={handleConfirmDeleteActivity}
-      />
+
       <Suspense fallback={<div>Loading...</div>}>
+        <DashboardHeader
+          handleCreateActivity={handleCreateActivity}
+          loadingCreateActivity={loading.createActivity}
+        />
+        <DashboardActivityList
+          activities={activities?.data?.data}
+          loadingActivities={loadingActivities}
+          handleConfirmDeleteActivity={handleConfirmDeleteActivity}
+        />
         <ModalInformation
           type="Activity"
           isOpen={isOpenInformationActivity}
